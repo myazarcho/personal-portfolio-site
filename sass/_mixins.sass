@@ -1,0 +1,20 @@
+=lato-bold
+    font-family: 'Lato-Bold'
+
+=lato-light
+    font-family: 'Lato-Light'
+
+=lato-regular
+    font-family: 'Lato-Regular'
+
+=respond($breakpoint)
+    @media screen and (max-width: $breakpoint)
+        @content
+
+=medium-screen
+    @media screen and (max-width: 1025px)
+        @content
+
+=small-screen
+    @media screen and (max-width: 639px)
+        @content

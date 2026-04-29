@@ -1,19 +1,12 @@
 {
-  "name": "portfilio",
+  "name": "portfolio",
   "version": "1.0.0",
-  "description": "\"My portfilio\"",
-  "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sass": "sass scss:css --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/myazarcho/Portfilio.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/myazarcho/Portfilio/issues"
-  },
-  "homepage": "https://github.com/myazarcho/Portfilio#readme"
+  "devDependencies": {
+    "gulp": "^5.0.1",
+    "gulp-sass": "^6.0.1",
+    "sass": "^1.99.0"
+  }
 }

@@ -1,6 +1,8 @@
+@use "variables"
+@use "mixins"
 header 
     nav.uk-navbar-container:not(.uk-navbar-transparent)
-        background-color: $dark
+        background-color: variables.$dark
         overflow: hidden
         .uk-navbar-center 
             overflow: hidden
@@ -10,10 +12,10 @@ header
                 overflow-x: auto 
                 li 
                     a 
-                        color: $light-pink
-                        +lato-regular
+                        color: variables.$light-pink
+                        +mixins.lato-regular
                         min-height: 50px
                 li.uk-active 
                     a 
-                        color: $light-green
+                        color: variables.$light-green
                     

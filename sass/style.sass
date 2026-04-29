@@ -1,4 +1,8 @@
-@import fonts 
+@use "variables"
+@use "mixins"
+@use "fonts"
+@use "home"
+@use "header"
 
 =lato-bold
     font-family: 'Lato-Bold'
@@ -9,10 +13,7 @@
 =lato-regular
     font-family: 'Lato-Regular'
 
-$dark: #222733 
-$grey:  #525e65
-$light-green: #73CCA8
-$light-pink: #DBE8D4
+
 
 =respond($breakpoint)
     @media screen and (max-width: $breakpoint)
@@ -26,42 +27,141 @@ $light-pink: #DBE8D4
     @media screen and (max-width: 639px)
         @content
 
+// =====================================
+// GLOBAL VISUAL ENERGY UPGRADE
+// =====================================
 
-body 
-    color: $dark
+// =====================================
+// AI ERA GLOBAL THEME
+// =====================================
+
+// =====================================
+// AI PORTFOLIO V2 - GLOBAL THEME
+// =====================================
+
+:root
+    --bg: #0B1120
+    --bg-soft: #111827
+    --surface: rgba(255,255,255,.04)
+    --surface-2: rgba(255,255,255,.06)
+    --border: rgba(255,255,255,.08)
+    --text: #E5E7EB
+    --muted: #94A3B8
+    --primary: #00E5FF
+    --secondary: #7C3AED
+    --accent: #22C55E
+
+*
+    box-sizing: border-box
+
+html
+    scroll-behavior: smooth
+
+body
+    margin: 0
+    font-family: Inter, sans-serif
+    background: #0B1120
+    background-image: radial-gradient(circle at 15% 20%, rgba(0,229,255,.10), transparent 25%), radial-gradient(circle at 85% 10%, rgba(124,58,237,.14), transparent 25%), radial-gradient(circle at 50% 90%, rgba(34,197,94,.08), transparent 20%)
+    color: var(--text)
+.container
+    width: 90%
+    max-width: 1200px
+    margin: 0 auto
+    position: relative
+    z-index: 2
+
+section
+    position: relative
+    padding: 100px 0
+    overflow: hidden
+
+h1,h2,h3,h4
+    margin: 0
+    color: #fff
+
+p
+    color: var(--muted)
+    line-height: 1.8
+
+a
+    text-decoration: none
+
+.section-head
+    text-align: center
+    margin-bottom: 55px
+
+.eyebrow
+    display: inline-block
+    padding: 8px 14px
+    border-radius: 999px
+    background: rgba(0,229,255,.08)
+    color: var(--primary)
+    border: 1px solid rgba(0,229,255,.15)
+    font-size: 12px
+    letter-spacing: 1px
+    text-transform: uppercase
+    margin-bottom: 14px
+
+.section-head h2
+    font-size: 42px
+    margin-bottom: 12px
+
+.glass
+    background: var(--surface)
+    border: 1px solid var(--border)
+    backdrop-filter: blur(14px)
+    box-shadow: 0 12px 40px rgba(0,0,0,.35)
+    border-radius: 22px
+
+.photo-card
+    animation: floatCard 4s ease-in-out infinite
+
+@keyframes floatCard
+    0%
+        transform: translateY(0)
+
+    50%
+        transform: translateY(-12px)
+
+    100%
+        transform: translateY(0)
+
+
+//body 
+    color: variables.$dark
     font-size: 18px
     line-height: 1.5
     letter-spacing: 1px
-    +lato-regular
-body.dark 
-    background-color: #525e65
+    +mixins.lato-regular
+//body.dark 
+    background: linear-gradient(180deg, #ffffff, #f8fafc)
     color: #DBE8D4
     h1,h2 
         color: #DBE8D4
     h3
-        color: $light-pink
+        color: variables.$light-pink
 h1, h2 
-    +lato-bold
-    color: $dark
+    +mixins.lato-bold
+    color: variables.$dark
 h1 
     font-size: 65px
     text-shadow: 2px 2px #73cca8
 
-    +small-screen 
+    +mixins.small-screen
         font-size: 45px
 h2 
     font-size: 45px
     text-shadow: 2px 2px #73cca8
 h3 
-    +lato-bold
-    color: $dark
+    +mixins.lato-bold
+    color: variables.$dark
     
 a
     &:hover
         text-decoration: none   
     
 p 
-    +lato-light
+    +mixins.lato-light
     letter-spacing: 1px
 input[type="checkbox"]
     -webkit-appearance: none
@@ -75,7 +175,7 @@ input[type="checkbox"]
     width: 940px
     max-width: 100%
     margin: 0 auto
-    +medium-screen 
+    +mixins.medium-screen
         width: auto
 .checkbox 
     opacity: 0
@@ -114,7 +214,7 @@ input[type="checkbox"]
     position: relative
     width: 65px
     height: 25px
-    border: 2px solid $light-pink
+    border: 2px solid variables.$light-pink
     border-radius: 20px
     transition: all .3s ease
     margin-top: 8px
@@ -124,12 +224,12 @@ input[type="checkbox"]
         border-radius: 50%
         width: 21px
         height: 21px
-        background: $light-green
+        background: variables.$light-green
         box-shadow: 0 1px 2px rgba(44,44,44,.2)
         transition: all .2s cubic-bezier(.5,.1,.75,1.35)
         
     &:checked
-        border-color: $light-green
+        border-color: variables.$light-green
         &:after
             right: 20px
             transform: translatex(20px)
@@ -161,8 +261,8 @@ body.dark
 
 
 footer 
-    background-color: $dark
-    +small-screen 
+    background-color: variables.$dark
+    +mixins.small-screen
         padding: 20px 0 40px
     .footer 
         align-items: center
@@ -172,7 +272,7 @@ footer
         p 
             margin-bottom: 0
             color: #fff
-            +small-screen 
+            +mixins.small-screen
                 font-size: 14px
         ul 
             list-style: none
@@ -181,7 +281,7 @@ footer
                 position: relative
                 display: inlibe-block
                 a 
-                    color: $light-pink
+                    color: variables.$light-pink
                     display: block
                     font-size: 14px
                     height: 50px
@@ -194,7 +294,7 @@ footer
         .social-hex
             width: 43px;
             height: 24.83px
-            background-color: $light-green
+            background-color: variables.$light-green
             margin: 12.41px 0
             transition: all 0.3s ease 0s
             display: block
@@ -208,12 +308,90 @@ footer
                 transition: all 0.3s ease 0s
             &::before
                 bottom: 100%
-                border-bottom: 12.41px solid $light-green
+                border-bottom: 12.41px solid variables.$light-green
             &::after
                 top: 100%
                 width: 0
-                border-top: 12.41px solid $light-green
+                border-top: 12.41px solid variables.$light-green
         
             
-@import _home
-@import _header
+
+
+.project-card,
+.edu-item,
+.info-box,
+.contact-box,
+.skill-card
+    background: rgba(255,255,255,.04)
+    border: 1px solid rgba(255,255,255,.08)
+    backdrop-filter: blur(14px)
+    box-shadow: 0 12px 40px rgba(0,0,0,.35)
+
+    &:hover
+        border-color: rgba(0,229,255,.35)
+        box-shadow: 0 0 0 1px rgba(0,229,255,.18), 0 18px 45px rgba(0,229,255,.12)
+.btn-primary,
+.nav-btn,
+.contact-btn
+    background: linear-gradient(135deg,#00E5FF,#7C3AED)
+    color: #fff
+    border: none
+    box-shadow: 0 0 18px rgba(0,229,255,.25)
+
+    &:hover
+        transform: translateY(-3px)
+        box-shadow: 0 0 28px rgba(124,58,237,.35)
+.hero-content h1 span
+    background: linear-gradient(90deg,#00E5FF,#7C3AED,#22C55E)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    animation: hueMove 6s linear infinite
+
+@keyframes hueMove
+    0%
+        filter: hue-rotate(0deg)
+
+    100%
+        filter: hue-rotate(360deg)
+.hero-section:before
+    content: ''
+    position: absolute
+    inset: 0
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px)
+    background-size: 40px 40px
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), transparent)
+
+
+
+// =====================================
+// GLOBAL ANIMATIONS
+// =====================================
+
+.reveal
+    opacity: 0
+    transform: translateY(28px)
+    transition: all .8s ease
+
+.reveal.show
+    opacity: 1
+    transform: translateY(0)
+
+.floating
+    animation: floating 4s ease-in-out infinite
+
+@keyframes floating
+    0%
+        transform: translateY(0px)
+
+    50%
+        transform: translateY(-12px)
+
+    100%
+        transform: translateY(0px)
+
+.glow-hover
+    transition: .3s ease
+
+.glow-hover:hover
+    box-shadow: 0 0 0 1px rgba(0,229,255,.18), 0 0 30px rgba(0,229,255,.12)
+    transform: translateY(-4px)

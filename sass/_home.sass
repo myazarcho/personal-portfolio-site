@@ -1,7 +1,9 @@
+@use "variables"
+@use "mixins"
 section 
     &:nth-child(even)
         padding: 80px 0
-    +small-screen 
+    +mixins.small-screen
         &:nth-child(even)
             padding: 40px 0
     
@@ -15,7 +17,7 @@ section
             width: 540px
             margin: 0 auto
             padding-top: 40px
-            +medium-screen 
+            +mixins.medium-screen
                 width: auto
 h2.sub-title
     position: relative
@@ -24,7 +26,7 @@ h2.sub-title
     &::after
         position: absolute
         content: ''
-        background-color: $light-pink
+        background-color: variables.$light-pink
         display: inline-block
         width: 100% 
         height: 3px
@@ -33,7 +35,7 @@ h2.sub-title
 .education 
     padding-bottom: 100px
     padding-top: 80px
-    +medium-screen 
+    +mixins.medium-screen
         padding-bottom: 0
 .about, .education
     // width: 28rem
@@ -42,7 +44,7 @@ h2.sub-title
     .profile
         margin: 100px 0 50px
         gap: 60px
-        +medium-screen 
+        +mixins.medium-screen
             flex-direction: column
         // text-align: center
         // .profile-photo 
@@ -55,7 +57,7 @@ h2.sub-title
         .description
             width: calc( 100% - 400px )
             text-align: justify
-            +medium-screen 
+            +mixins.medium-screen
                 width: auto
            
         .flip-card
@@ -63,9 +65,9 @@ h2.sub-title
             background-color: transparent 
             width: 400px 
             margin: 0 auto
-            +medium-screen 
+            +mixins.medium-screen
                 margin-bottom: 200px
-            +small-screen 
+            +mixins.small-screen
                 width: 100%
             .inner 
                 position: relative
@@ -74,7 +76,7 @@ h2.sub-title
                 transition: transform 1.5s
                 transform-style: preserve-3d
                 transform: rotate(-4deg)
-                +medium-screen 
+                +mixins.medium-screen
                     margin-bottom: 100px
                 .front, .back 
                     position: absolute
@@ -87,7 +89,7 @@ h2.sub-title
                     justify-content: center
                     flex-direction: column
                     // p 
-                        +lato-bold
+                        +mixins.lato-bold
                 .front 
                     background-color: transparent
                     background-size: cover
@@ -95,19 +97,19 @@ h2.sub-title
                     background-position: center 
                     height: 288px
                 .back
-                    background-color: $light-pink
-                    color: $light-green
+                    background-color: variables.$light-pink
+                    color: variables.$light-green
                     transform: rotateY(180deg)
                     padding: 0 20px
                     width: 366px
                     text-align: center
-                    +medium-screen 
+                    +mixins.medium-screen
                         padding: 0 0
                         width: auto
                     p 
                         margin-bottom: 0
                         span 
-                            +lato-bold
+                            +mixins.lato-bold
                 &::before
                     content: ''
                     position: absolute
@@ -115,7 +117,7 @@ h2.sub-title
                     left: -9px
                     width: 100%
                     height: 286px
-                    background-image: linear-gradient(54deg, $light-green 0%, $light-pink 43%, #c00 100%)
+                    background-image: linear-gradient(54deg, variables.$light-green 0%, variables.$light-pink 43%, #c00 100%)
             &:hover
                 .inner 
                     transform: rotateY(180deg)
@@ -151,7 +153,7 @@ h2.sub-title
                 width: 100%
                 height: 100%
                 clip-path: polygon(0% 25%, 50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%)
-                background: $light-pink
+                background: variables.$light-pink
                 display: flex
                 align-items: center
                 justify-content: center
@@ -172,8 +174,8 @@ h2.sub-title
                             img 
                                 width: 50px
                         .hexagon-text
-                            color: $dark
-                            +lato-bold
+                            color: variables.$dark
+                            +mixins.lato-bold
                         
 
             &:hover 
@@ -189,7 +191,7 @@ h2.sub-title
                                 color: #fff 
 .contact 
     .mail-box 
-        border: 3px solid $light-green
+        border: 3px solid variables.$light-green
         border-radius: 6px
         margin-top: 100px
         width: 550px
@@ -197,17 +199,17 @@ h2.sub-title
         margin-right: auto
         padding: 40px
         display: grid
-        +medium-screen 
+        +mixins.medium-screen
             width: auto
         p 
             font-size: 1.5rem 
-            +lato-bold
+            +mixins.lato-bold
 
-            +medium-screen 
+            +mixins.medium-screen
                 text-align: center
         .say-btn 
-            background-color: $light-green 
-            color: $dark
+            background-color: variables.$light-green 
+            color: variables.$dark
             font-size: 20px
             padding: 5px 15px
             border-radius: 6px
@@ -215,9 +217,8 @@ h2.sub-title
             margin: 20px auto 40px auto
         .detail-contact 
             display: flex
-            justify-content: space-between
             font-size: 1rem
-            +small-screen 
+            +mixins.small-screen
                 flex-direction: column
             > div 
                 padding-bottom: 20px
@@ -225,7 +226,692 @@ h2.sub-title
     text-align: center
     span
         a
-            +lato-bold
+            +mixins.lato-bold
             font-size: 20px 
-            color: $light-green
+            color: variables.$light-green
             text-decoration: underline
+
+
+// =====================================
+// EDUCATION PREMIUM ACCORDION UI
+// Add into style.sass
+// =====================================
+
+.section-space
+    padding: 100px 0
+    //background: #f8fafc
+
+.container
+    width: 90%
+    max-width: 1000px
+    margin: 0 auto
+
+.section-head
+    text-align: center
+    margin-bottom: 50px
+
+    .eyebrow
+        display: inline-block
+        color: #73CCA8
+        font-size: 14px
+        font-weight: 700
+        letter-spacing: 2px
+        text-transform: uppercase
+        margin-bottom: 12px
+
+    h2
+        font-size: 42px
+        color: #222733
+        margin-bottom: 12px
+
+    p
+        max-width: 680px
+        margin: 0 auto
+        color: #6b7280
+        line-height: 1.8
+
+.edu-accordion
+    display: grid
+    gap: 18px
+
+.edu-item
+    background: #fff
+    border-radius: 18px
+    box-shadow: 0 12px 28px rgba(0,0,0,.06)
+    overflow: hidden
+    border: 1px solid #eef2f7
+    transition: .3s ease
+
+    &:hover
+        transform: translateY(-3px)
+        box-shadow: 0 18px 35px rgba(0,0,0,.09)
+
+.edu-trigger
+    width: 100%
+    border: none
+    background: transparent
+    padding: 24px
+    cursor: pointer
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 20px
+    text-align: left
+
+.edu-left
+    display: flex
+    align-items: center
+    gap: 16px
+
+.edu-icon
+    width: 54px
+    height: 54px
+    min-width: 54px
+    border-radius: 14px
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 24px
+    background: #eefaf4
+
+.edu-trigger h3
+    font-size: 22px
+    color: #222733
+    margin-bottom: 4px
+
+.edu-sub
+    font-size: 14px
+    color: #6b7280
+
+.edu-arrow
+    width: 36px
+    height: 36px
+    border-radius: 50%
+    background: #f3f4f6
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 24px
+    color: #374151
+    transition: .3s ease
+
+.edu-content
+    max-height: 0
+    overflow: hidden
+    transition: max-height .45s ease
+
+.edu-body
+    padding: 0 24px 24px 24px
+    border-top: 1px solid #f1f5f9
+
+    p
+        margin-top: 14px
+        color: #4b5563
+        line-height: 1.8
+
+.edu-item.active
+
+    .edu-content
+        max-height: 320px
+
+    .edu-arrow
+        transform: rotate(45deg)
+        background: #73CCA8
+        color: #fff
+
+    .edu-icon
+        background: #73CCA8
+        color: #fff
+
+// =====================================
+// MOBILE
+// =====================================
+
+@media screen and (max-width: 768px)
+
+    .section-space
+        padding: 80px 0
+
+    .section-head h2
+        font-size: 34px
+
+    .edu-trigger
+        padding: 20px
+
+    .edu-trigger h3
+        font-size: 18px
+
+    .edu-icon
+        width: 46px
+        height: 46px
+        min-width: 46px
+        font-size: 20px
+
+@media screen and (max-width: 480px)
+
+    .section-head h2
+        font-size: 28px
+
+    .edu-left
+        align-items: flex-start
+
+    .edu-trigger
+        gap: 12px
+
+    .edu-sub
+        font-size: 13px
+
+//project section
+// =====================================
+// PROJECTS SECTION - MODERN PRO UI
+// =====================================
+
+.projects-section
+    background: #ffffff
+
+.projects-grid
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    gap: 24px
+    margin-top: 50px
+
+.project-card
+    background: #fff
+    border: 1px solid #eef2f7
+    border-radius: 18px
+    padding: 24px
+    cursor: pointer
+    transition: .3s ease
+    box-shadow: 0 10px 24px rgba(0,0,0,.05)
+    display: flex
+    flex-direction: column
+    min-height: 260px
+
+    &:hover
+        transform: translateY(-8px)
+        box-shadow: 0 18px 35px rgba(0,0,0,.10)
+
+.project-top
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 18px
+
+.project-icon
+    width: 48px
+    height: 48px
+    border-radius: 14px
+    background: #eefaf4
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 22px
+
+.project-tag
+    font-size: 12px
+    font-weight: 700
+    color: #73CCA8
+    background: rgba(115,204,168,.12)
+    padding: 6px 10px
+    border-radius: 30px
+
+.project-card h3
+    font-size: 22px
+    color: #222733
+    margin-bottom: 12px
+    line-height: 1.4
+
+.project-desc
+    color: #6b7280
+    line-height: 1.7
+    margin-bottom: 18px
+    flex-grow: 1
+
+.project-meta
+    display: flex
+    flex-wrap: wrap
+    gap: 8px
+
+    span
+        font-size: 12px
+        padding: 6px 10px
+        border-radius: 20px
+        background: #f3f4f6
+        color: #374151
+        font-weight: 600
+
+// =====================================
+// RESPONSIVE
+// =====================================
+
+@media screen and (max-width: 1024px)
+
+    .projects-grid
+        grid-template-columns: repeat(2, 1fr)
+
+@media screen and (max-width: 768px)
+
+    .projects-grid
+        grid-template-columns: 1fr
+
+    .project-card
+        min-height: auto
+
+    .project-card h3
+        font-size: 20px
+
+@media screen and (max-width: 480px)
+
+    .project-card
+        padding: 20px
+
+
+.skills-modern
+    background: #fff
+
+.skills-layout
+    display: grid
+    grid-template-columns: 1.2fr 1fr
+    gap: 40px
+    margin-top: 50px
+
+.bar-item
+    margin-bottom: 22px
+
+.bar-head
+    display: flex
+    justify-content: space-between
+    margin-bottom: 8px
+    font-weight: 600
+    color: #222733
+
+
+// =====================================
+// LOOPING SKILL BAR ANIMATION
+// Replace previous bar-line animation
+// =====================================
+
+.bar-line
+    height: 10px
+    background: #eef2f7
+    border-radius: 20px
+    overflow: hidden
+    position: relative
+
+    div
+        height: 100%
+        width: 0
+        border-radius: 20px
+        background: linear-gradient(90deg,#73CCA8,#4fd1c5)
+        animation: fillLoop 2.8s ease-in-out infinite
+
+// stagger delays
+.bar-item:nth-child(2) .bar-line div
+    animation-delay: .3s
+
+.bar-item:nth-child(3) .bar-line div
+    animation-delay: .6s
+
+.bar-item:nth-child(4) .bar-line div
+    animation-delay: .9s
+
+@keyframes fillLoop
+    0%
+        width: 0
+
+    45%
+        width: var(--target)
+
+    70%
+        width: var(--target)
+
+    100%
+        width: 0
+
+.skills-tags-board
+    display: flex
+    flex-wrap: wrap
+    gap: 12px
+    align-content: flex-start
+
+    span
+        padding: 10px 14px
+        border-radius: 30px
+        background: #f8fafc
+        border: 1px solid #eef2f7
+        font-weight: 600
+        color: #374151
+
+@media screen and (max-width: 900px)
+    .skills-layout
+        grid-template-columns: 1fr
+
+
+// =====================================
+// MODERN NAVBAR
+// =====================================
+
+.site-header
+    position: sticky
+    top: 0
+    z-index: 999
+    background: rgba(255,255,255,.82)
+    backdrop-filter: blur(12px)
+    border-bottom: 1px solid #eef2f7
+
+.nav-wrap
+    height: 78px
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+.brand
+    font-size: 24px
+    font-weight: 800
+    color: #222733
+    text-decoration: none
+
+.main-nav
+    display: flex
+    gap: 28px
+
+    a
+        color: #374151
+        text-decoration: none
+        font-weight: 600
+        transition: .2s ease
+
+        &:hover
+            color: #73CCA8
+
+.nav-btn
+    padding: 10px 18px
+    background: #73CCA8
+    color: #fff
+    border-radius: 30px
+    text-decoration: none
+    font-weight: 700
+
+// =====================================
+// HERO
+// =====================================
+
+.hero-section
+    padding: 90px 0
+    background: linear-gradient(180deg,#ffffff,#f8fafc)
+
+.hero-grid
+    display: grid
+    grid-template-columns: 1.2fr 1fr
+    gap: 60px
+    align-items: center
+
+.hero-badge
+    display: inline-block
+    padding: 8px 14px
+    border-radius: 30px
+    background: rgba(115,204,168,.12)
+    color: #73CCA8
+    font-weight: 700
+    font-size: 13px
+    margin-bottom: 18px
+
+.hero-content h1
+    font-size: 56px
+    line-height: 1.15
+    color: #222733
+    margin-bottom: 20px
+
+    span
+        color: #73CCA8
+
+.hero-content p
+    font-size: 18px
+    line-height: 1.8
+    color: #6b7280
+    max-width: 620px
+    margin-bottom: 28px
+
+.hero-actions
+    display: flex
+    gap: 14px
+    flex-wrap: wrap
+
+.btn-primary,
+.btn-outline
+    padding: 14px 22px
+    border-radius: 32px
+    text-decoration: none
+    font-weight: 700
+
+.btn-primary
+    background: #73CCA8
+    color: #fff
+
+.btn-outline
+    border: 1px solid #d1d5db
+    color: #222733
+
+.hero-photo
+    display: flex
+    justify-content: center
+
+.photo-card
+    width: 340px
+    height: 420px
+    border-radius: 28px
+    background: linear-gradient(145deg,#73CCA8,#dbe8d4)
+    padding: 12px
+    box-shadow: 0 24px 50px rgba(0,0,0,.10)
+
+    img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        border-radius: 22px
+        background: #fff
+
+// =====================================
+// ABOUT
+// =====================================
+
+.about-modern
+    background: #ffffff
+
+.about-layout
+    display: grid
+    grid-template-columns: 1.4fr 1fr
+    gap: 40px
+    margin-top: 50px
+
+.about-story p
+    color: #4b5563
+    line-height: 1.9
+    margin-bottom: 18px
+
+.about-info
+    display: grid
+    gap: 16px
+
+.info-box
+    padding: 22px
+    border-radius: 18px
+    background: #f8fafc
+    border: 1px solid #eef2f7
+
+    span
+        display: block
+        font-size: 13px
+        color: #6b7280
+        margin-bottom: 8px
+        text-transform: uppercase
+        letter-spacing: 1px
+
+    strong
+        font-size: 18px
+        color: #222733
+
+    a
+        color: #73CCA8
+        text-decoration: none
+
+// =====================================
+// RESPONSIVE
+// =====================================
+
+@media screen and (max-width: 992px)
+
+    .hero-grid,
+    .about-layout
+        grid-template-columns: 1fr
+
+    .hero-content h1
+        font-size: 44px
+
+    .hero-photo
+        order: -1
+
+@media screen and (max-width: 768px)
+
+    .main-nav
+        display: none
+
+    .hero-section
+        padding: 70px 0
+
+    .hero-content h1
+        font-size: 36px
+
+    .photo-card
+        width: 280px
+        height: 340px
+
+@media screen and (max-width: 480px)
+
+    .nav-btn
+        display: none
+
+    .hero-content p
+        font-size: 16px
+// =====================================
+// MODERN CONTACT SECTION
+// =====================================
+
+.contact-modern
+    background: linear-gradient(180deg,#ffffff,#f8fafc)
+
+.contact-box
+    display: grid
+    grid-template-columns: 1.2fr 1fr
+    gap: 30px
+    padding: 40px
+    border-radius: 28px
+    background: #ffffff
+    border: 1px solid #eef2f7
+    box-shadow: 0 20px 45px rgba(0,0,0,.06)
+
+.contact-left h2
+    font-size: 42px
+    color: #222733
+    margin: 12px 0 16px
+
+.contact-left p
+    color: #6b7280
+    line-height: 1.8
+    max-width: 520px
+    margin-bottom: 28px
+
+.contact-btn
+    display: inline-block
+    padding: 14px 24px
+    border-radius: 32px
+    background: #73CCA8
+    color: #fff
+    text-decoration: none
+    font-weight: 700
+    transition: .3s ease
+
+    &:hover
+        transform: translateY(-3px)
+        box-shadow: 0 14px 28px rgba(115,204,168,.28)
+
+.contact-right
+    display: grid
+    gap: 16px
+
+.contact-item
+    padding: 20px
+    border-radius: 18px
+    background: #f8fafc
+    border: 1px solid #eef2f7
+
+.contact-label
+    display: block
+    font-size: 12px
+    text-transform: uppercase
+    letter-spacing: 1px
+    color: #6b7280
+    margin-bottom: 8px
+
+.contact-item strong
+    color: #222733
+    font-size: 17px
+    line-height: 1.5
+
+// =====================================
+// FOOTER
+// =====================================
+
+.site-footer
+    padding: 28px 0
+    background: #ffffff
+    border-top: 1px solid #eef2f7
+
+.footer-wrap
+    display: flex
+    justify-content: space-between
+    align-items: center
+    gap: 20px
+    flex-wrap: wrap
+
+.footer-wrap p
+    color: #6b7280
+    margin: 0
+
+.footer-links
+    display: flex
+    gap: 18px
+    flex-wrap: wrap
+
+    a
+        text-decoration: none
+        color: #374151
+        font-weight: 600
+        transition: .2s ease
+
+        &:hover
+            color: #73CCA8
+
+// =====================================
+// RESPONSIVE
+// =====================================
+
+@media screen and (max-width: 900px)
+
+    .contact-box
+        grid-template-columns: 1fr
+        padding: 28px
+
+@media screen and (max-width: 768px)
+
+    .contact-left h2
+        font-size: 34px
+
+@media screen and (max-width: 480px)
+
+    .contact-box
+        padding: 22px
+
+    .footer-wrap
+        flex-direction: column
+        text-align: center
